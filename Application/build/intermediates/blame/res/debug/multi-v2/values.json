@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/hsuj/Documents/CardReader_H30/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
                     "source": "/Users/hsuj/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/80747ba4bb9a5f3e9a5cff570fa2f94e/res/values/values.xml",
@@ -23,39 +23,20 @@
                     }
                 },
                 {
-                    "source": "/Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/res/values/template-dimens.xml",
+                    "source": "/Users/hsuj/Documents/CardReader_H30/Application/src/main/res/values/strings.xml",
                     "from": {
-                        "startLines": "28,24,23,22,21,20,29",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "959,880,836,791,748,706,1029",
-                        "endColumns": "69,42,43,44,42,41,67",
-                        "endOffsets": "1024,918,875,831,786,743,1092"
+                        "startLines": "19,18",
+                        "startColumns": "4,4",
+                        "startOffsets": "701,642",
+                        "endColumns": "57,58",
+                        "endOffsets": "754,696"
                     },
                     "to": {
-                        "startLines": "172,173,174,175,176,177,205",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "11780,11850,11893,11937,11982,12025,13710",
-                        "endColumns": "69,42,43,44,42,41,67",
-                        "endOffsets": "11845,11888,11932,11977,12020,12062,13773"
-                    }
-                },
-                {
-                    "source": "/Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/res/values/base-strings.xml",
-                    "from": {
-                        "startLines": "18,19",
+                        "startLines": "269,271",
                         "startColumns": "4,4",
-                        "startOffsets": "647,695",
-                        "endLines": "18,32",
-                        "endColumns": "47,13",
-                        "endOffsets": "690,1268"
-                    },
-                    "to": {
-                        "startLines": "270,272",
-                        "startColumns": "4,4",
-                        "startOffsets": "17810,17917",
-                        "endLines": "270,285",
-                        "endColumns": "47,13",
-                        "endOffsets": "17853,18490"
+                        "startOffsets": "17752,17858",
+                        "endColumns": "57,58",
+                        "endOffsets": "17805,17912"
                     }
                 },
                 {
@@ -97,7 +78,7 @@
                     }
                 },
                 {
-                    "source": "/Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/res/values/template-styles.xml",
+                    "source": "/Users/hsuj/Documents/CardReader_H30/Application/src/main/res/values/template-styles.xml",
                     "from": {
                         "startLines": "24,20,22,27,29,34",
                         "startColumns": "4,4,4,4,4,4",
@@ -116,20 +97,56 @@
                     }
                 },
                 {
-                    "source": "/Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/res/values/strings.xml",
+                    "source": "/Users/hsuj/Documents/CardReader_H30/Application/src/main/res/values/base-strings.xml",
                     "from": {
-                        "startLines": "19,18",
+                        "startLines": "18,19",
                         "startColumns": "4,4",
-                        "startOffsets": "701,642",
-                        "endColumns": "57,58",
-                        "endOffsets": "754,696"
+                        "startOffsets": "647,695",
+                        "endLines": "18,32",
+                        "endColumns": "47,13",
+                        "endOffsets": "690,1268"
                     },
                     "to": {
-                        "startLines": "269,271",
+                        "startLines": "270,272",
                         "startColumns": "4,4",
-                        "startOffsets": "17752,17858",
-                        "endColumns": "57,58",
-                        "endOffsets": "17805,17912"
+                        "startOffsets": "17810,17917",
+                        "endLines": "270,285",
+                        "endColumns": "47,13",
+                        "endOffsets": "17853,18490"
+                    }
+                },
+                {
+                    "source": "/Users/hsuj/Documents/CardReader_H30/Application/src/main/res/values/template-dimens.xml",
+                    "from": {
+                        "startLines": "28,24,23,22,21,20,29",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "959,880,836,791,748,706,1029",
+                        "endColumns": "69,42,43,44,42,41,67",
+                        "endOffsets": "1024,918,875,831,786,743,1092"
+                    },
+                    "to": {
+                        "startLines": "172,173,174,175,176,177,205",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "11780,11850,11893,11937,11982,12025,13710",
+                        "endColumns": "69,42,43,44,42,41,67",
+                        "endOffsets": "11845,11888,11932,11977,12020,12062,13773"
+                    }
+                },
+                {
+                    "source": "/Users/hsuj/Documents/CardReader_H30/Application/src/main/res/values/fragmentview_strings.xml",
+                    "from": {
+                        "startLines": "17,16",
+                        "startColumns": "4,4",
+                        "startOffsets": "670,617",
+                        "endColumns": "52,52",
+                        "endOffsets": "718,665"
+                    },
+                    "to": {
+                        "startLines": "286,287",
+                        "startColumns": "4,4",
+                        "startOffsets": "18495,18548",
+                        "endColumns": "52,52",
+                        "endOffsets": "18543,18596"
                     }
                 },
                 {
@@ -166,23 +183,6 @@
                         "startOffsets": "3726,13045,13098,13151,13204,107392,107568,107690,107952,108147",
                         "endColumns": "88,52,52,52,52,65,121,60,65,66",
                         "endOffsets": "3810,13093,13146,13199,13252,107453,107685,107746,108013,108209"
-                    }
-                },
-                {
-                    "source": "/Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/res/values/fragmentview_strings.xml",
-                    "from": {
-                        "startLines": "17,16",
-                        "startColumns": "4,4",
-                        "startOffsets": "670,617",
-                        "endColumns": "52,52",
-                        "endOffsets": "718,665"
-                    },
-                    "to": {
-                        "startLines": "286,287",
-                        "startColumns": "4,4",
-                        "startOffsets": "18495,18548",
-                        "endColumns": "52,52",
-                        "endOffsets": "18543,18596"
                     }
                 }
             ]

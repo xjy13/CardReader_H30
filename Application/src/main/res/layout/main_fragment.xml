@@ -35,30 +35,10 @@ limitations under the License.
             android:id="@+id/card_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/card_title"
+            android:text="Staff ID"
             android:fontFamily="sans-serif-condensed"
             android:textStyle="bold"
             android:textSize="32dp"
-            />
-        <TextView
-            android:id="@+id/card_account_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/account_number"
-            android:fontFamily="sans-serif"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:layout_marginTop="40dp"
-            />
-        <TextView
-            android:id="@+id/card_account_field"
-            android:width="360dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:textStyle="bold"
-            android:textSize="42dp"
-            android:singleLine="true"
             />
 
         <TextView
@@ -68,7 +48,29 @@ limitations under the License.
             android:width="360dp"
             android:fontFamily="sans-serif-condensed"
             android:singleLine="true"
-            android:textSize="42dp"
+            android:textSize="30dp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/card_account_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打卡狀態"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textSize="32dp"
+            android:layout_marginTop="40dp"
+            />
+        <TextView
+            android:id="@+id/card_account_field"
+            android:width="360dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:singleLine="true"
+            />
+
     </LinearLayout>
 </FrameLayout>

@@ -99,8 +99,8 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
 
                 byte[] result_2 = APDUExecutor.apdu(SAMPLE_TEST_AID_2);
                 byte[] payload_2 = APDUTranslator.rapduResp(result_2).get(0);
-                Log.i(TAG, "GET_STRING_1: " + Utils.byte2hex(result_2));
-                Log.i(TAG, "GET STRING_2: " + new String(APDUTranslator.rapduResp(result_2).get(1), StandardCharsets.UTF_8));
+                //Log.i(TAG, "GET_STRING_1: " + Utils.byte2hex(result_2));
+                Log.i(TAG, "convert: " + new String(APDUTranslator.rapduResp(result_2).get(1), StandardCharsets.UTF_8));
                 testDisplayResult(statusWord,payload);
             } catch (IOException e) {
                 Log.e(TAG, "Error communicating with card: " + e.toString());

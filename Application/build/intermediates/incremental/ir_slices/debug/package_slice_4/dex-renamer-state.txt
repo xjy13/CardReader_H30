@@ -1,4 +1,4 @@
-#Sat Sep 21 16:02:34 CST 2019
-base.0=/Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/build/intermediates/transforms/dexMerger/debug/4
+#Sat Sep 21 18:21:12 CST 2019
+base.0=/Users/hsuj/Documents/CardReader_H30/Application/build/intermediates/transforms/dexMerger/debug/4
 path.0=classes.dex
 renamed.0=classes.dex

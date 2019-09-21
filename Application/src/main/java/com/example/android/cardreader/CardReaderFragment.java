@@ -54,10 +54,10 @@ public class CardReaderFragment extends Fragment implements LoyaltyCardReader.Ac
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.main_fragment, container, false);
         if (v != null) {
-            mAccountField = (TextView) v.findViewById(R.id.card_account_field);
-            mAccountField.setText("Waiting...");
-
             mTestData = (TextView) v.findViewById(R.id.card_test_data_field);
+            mTestData.setText("Waiting...");
+
+            mAccountField = (TextView) v.findViewById(R.id.card_account_field);
             mAccountField.setText("TestXD~~");
 
             mLoyaltyCardReader = new LoyaltyCardReader(this);
@@ -100,13 +100,19 @@ public class CardReaderFragment extends Fragment implements LoyaltyCardReader.Ac
     }
 
     @Override
-    public void onAccountReceived(final String account) {
+    public void onAccountReceived(final String receiveData) {
         // This callback is run on a background thread, but updates to UI elements must be performed
         // on the UI thread.
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mAccountField.setText(account);
+                mAccountField.setText(receiveData);
+            }
+        });
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mTestData.setText(receiveData);
             }
         });
     }

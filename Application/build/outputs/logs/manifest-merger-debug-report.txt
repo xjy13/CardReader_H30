@@ -1,8 +1,8 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:18:1-53:12
-INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:18:1-53:12
-INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:18:1-53:12
+ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:18:1-53:12
+INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:18:1-53:12
+INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:18:1-53:12
 MERGED from [com.android.support:support-v13:28.0.0] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/support-v13-28.0.0.aar/88d872aca207a6cd5c45a0885f6ba6b2/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-v4:28.0.0] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/support-v4-28.0.0.aar/41ed11dcfa9195a07d10a6987ad27047/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:cardview-v7:28.0.0] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/80747ba4bb9a5f3e9a5cff570fa2f94e/AndroidManifest.xml:17:1-22:12
@@ -33,32 +33,32 @@ MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/hsuj/.gradle/caches/
 MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/a292ec41e692db962491de52e9ecc256/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/9333e5cd62f914cdb24c2ad735dea419/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/a53c20dba3c6f7968c9008277385128d/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:18:1-53:12
-INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:18:1-53:12
+INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:18:1-53:12
+INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:18:1-53:12
 	package
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:19:5-45
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:19:5-45
 	android:versionName
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:21:5-30
-		INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
-		INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:21:5-30
+		INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:18:11-69
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:18:11-69
 	android:versionCode
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:20:5-28
-		INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
-		INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:20:5-28
+		INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
 uses-permission#android.permission.NFC
-ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:25:5-62
+ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:25:5-62
 	android:name
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:25:22-59
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:25:22-59
 uses-feature#android.hardware.nfc
-ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:26:5-81
+ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:26:5-81
 	android:required
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:26:55-78
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:26:55-78
 	android:name
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:26:19-54
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:26:19-54
 application
-ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:28:5-50:19
+ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:28:5-50:19
 MERGED from [com.android.support:support-compat:28.0.0] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/ee707f3ae118685f8e027adb43c1877d/AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:support-compat:28.0.0] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/ee707f3ae118685f8e027adb43c1877d/AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/93878a401b967d42c7e4966efb5f08bc/AndroidManifest.xml:22:5-23:19
@@ -66,47 +66,47 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/hsuj/.gradle
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/ee707f3ae118685f8e027adb43c1877d/AndroidManifest.xml:22:18-91
 	android:label
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:29:9-41
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:29:9-41
 	android:icon
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:30:9-45
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:30:9-45
 	android:allowBackup
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:28:18-44
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:28:18-44
 	android:theme
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:31:9-40
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:31:9-40
 activity#com.example.android.cardreader.MainActivity
-ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:32:9-49:20
+ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:32:9-49:20
 	android:label
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:33:19-51
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:33:19-51
 	android:launchMode
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:34:19-49
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:34:19-49
 	android:name
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:32:19-47
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:32:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:35:13-38:29
+ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:35:13-38:29
 action#android.intent.action.MAIN
-ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:36:17-69
+ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:36:17-69
 	android:name
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:36:25-66
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:36:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:37:17-77
+ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:37:17-77
 	android:name
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:37:27-74
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:37:27-74
 intent-filter#action:name:android.nfc.action.TECH_DISCOVERED
-ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:43:13-45:29
+ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:43:13-45:29
 action#android.nfc.action.TECH_DISCOVERED
-ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:44:17-77
+ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:44:17-77
 	android:name
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:44:25-74
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:44:25-74
 meta-data#android.nfc.action.TECH_DISCOVERED
-ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:46:13-48:59
+ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:46:13-48:59
 	android:resource
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:48:17-56
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:48:17-56
 	android:name
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml:47:17-66
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml:47:17-66
 uses-sdk
-INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
-INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
+INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
+INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
 MERGED from [com.android.support:support-v13:28.0.0] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/support-v13-28.0.0.aar/88d872aca207a6cd5c45a0885f6ba6b2/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v13:28.0.0] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/support-v13-28.0.0.aar/88d872aca207a6cd5c45a0885f6ba6b2/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v4:28.0.0] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/support-v4-28.0.0.aar/41ed11dcfa9195a07d10a6987ad27047/AndroidManifest.xml:20:5-44
@@ -167,13 +167,13 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/hsuj/.gradle/cac
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/9333e5cd62f914cdb24c2ad735dea419/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/a53c20dba3c6f7968c9008277385128d/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] /Users/hsuj/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/a53c20dba3c6f7968c9008277385128d/AndroidManifest.xml:20:5-44
-INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
-INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
+INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
+INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
-		INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
-		ADDED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
-		INJECTED from /Users/hsuj/Documents/HCE_SampleCode/android-CardReader-master/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
+		ADDED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/hsuj/Documents/CardReader_H30/Application/src/main/AndroidManifest.xml
