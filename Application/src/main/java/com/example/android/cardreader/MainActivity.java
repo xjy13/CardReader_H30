@@ -1,18 +1,18 @@
 /*
-* Copyright 2013 The Android Open Source Project
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright 2013 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 
 package com.example.android.cardreader;
@@ -21,6 +21,12 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.ViewAnimator;
 
 import com.example.android.common.activities.SampleActivityBase;
@@ -42,6 +48,7 @@ public class MainActivity extends SampleActivityBase {
 
     // Whether the Log Fragment is currently shown
     private boolean mLogShown;
+    private int selectTask = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +61,27 @@ public class MainActivity extends SampleActivityBase {
             transaction.replace(R.id.sample_content_fragment, fragment);
             transaction.commit();
         }
+
+        LinearLayout linearlayout = (LinearLayout) findViewById(R.id.sample_main_layout);
+        Spinner spinner = new Spinner(MainActivity.this);
+        final String[] lunch = {"上班", "下班"};
+        ArrayAdapter<String> lunchList = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, lunch);
+        spinner.setAdapter(lunchList);
+        linearlayout.addView(spinner);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG, "select: " + position);
+                Toast.makeText(MainActivity.this, "您選擇了:" + lunch[position], Toast.LENGTH_SHORT).show();
+                selectTask = position;
+                LoyaltyCardReader.getTask(false, position, MainActivity.this);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
@@ -73,7 +101,7 @@ public class MainActivity extends SampleActivityBase {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.menu_toggle_log:
                 mLogShown = !mLogShown;
                 ViewAnimator output = (ViewAnimator) findViewById(R.id.sample_output);
@@ -88,7 +116,9 @@ public class MainActivity extends SampleActivityBase {
         return super.onOptionsItemSelected(item);
     }
 
-    /** Create a chain of targets that will receive log data */
+    /**
+     * Create a chain of targets that will receive log data
+     */
     @Override
     public void initializeLogging() {
         // Wraps Android's native log framework.
@@ -106,5 +136,13 @@ public class MainActivity extends SampleActivityBase {
         msgFilter.setNext(logFragment.getLogView());
 
         Log.i(TAG, "Ready");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (selectTask != -1) {
+            LoyaltyCardReader.getTask(true, selectTask, MainActivity.this);
+        }
     }
 }
