@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.concurrent.Semaphore;
 
 /**
  * Callback class, invoked when an NFC card is scanned while the device is running in reader mode.
@@ -49,6 +50,9 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
     // Weak reference to prevent retain loop. mAccountCallback is responsible for exiting
     // foreground mode before it becomes invalid (e.g. during onPause() or onStop()).
     private WeakReference<AccountCallback> mAccountCallback;
+    private WeakReference<AccountCallback> mTestData;
+    private boolean isShow = false;
+    Semaphore semaphore = new Semaphore(1);
 
     public interface AccountCallback {
         void onAccountReceived(String account);
@@ -56,6 +60,7 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
 
     public LoyaltyCardReader(AccountCallback accountCallback) {
         mAccountCallback = new WeakReference<AccountCallback>(accountCallback);
+        mTestData = new WeakReference<AccountCallback>(accountCallback);
     }
 
     /**
@@ -88,6 +93,7 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
                 // This command tells the remote device which service we wish to communicate with.
                 Log.i(TAG, "Requesting remote AID: " + SAMPLE_TEST_AID);
                 // Send command to remote device
+                semaphore.acquire();
                 byte[] result = APDUExecutor.apdu(SAMPLE_TEST_AID);
                 // If AID is successfully selected, 0x9000 is returned as the status word (last 2
                 // bytes of the result) by convention. Everything before the status word is
@@ -95,15 +101,23 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
                 byte[] statusWord =  APDUTranslator.rapduResp(result).get(0);
                 byte[] payload = APDUTranslator.rapduResp(result).get(1);
                 Log.d(TAG,"payload: "+Utils.byte2hexForLog(payload));
+                testDisplayResult(statusWord, payload);
+                semaphore.release();
 
-
+                semaphore.acquire();
                 byte[] result_2 = APDUExecutor.apdu(SAMPLE_TEST_AID_2);
-                byte[] payload_2 = APDUTranslator.rapduResp(result_2).get(0);
+                byte[] statusWord_2 = APDUTranslator.rapduResp(result_2).get(0);
+                byte[] payload_2 = APDUTranslator.rapduResp(result_2).get(1);
                 //Log.i(TAG, "GET_STRING_1: " + Utils.byte2hex(result_2));
-                Log.i(TAG, "convert: " + new String(APDUTranslator.rapduResp(result_2).get(1), StandardCharsets.UTF_8));
-                testDisplayResult(statusWord,payload);
+                // Log.i(TAG, "convert: " + new String(APDUTranslator.rapduResp(result_2).get(1), StandardCharsets.UTF_8));
+
+                testDisplayResult(statusWord_2, payload_2);
+                semaphore.release();
+
             } catch (IOException e) {
                 Log.e(TAG, "Error communicating with card: " + e.toString());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }

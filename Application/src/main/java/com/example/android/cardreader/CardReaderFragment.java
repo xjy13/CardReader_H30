@@ -103,17 +103,21 @@ public class CardReaderFragment extends Fragment implements LoyaltyCardReader.Ac
     public void onAccountReceived(final String receiveData) {
         // This callback is run on a background thread, but updates to UI elements must be performed
         // on the UI thread.
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mAccountField.setText(receiveData);
-            }
-        });
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mTestData.setText(receiveData);
-            }
-        });
+        Log.d(TAG, "receive data to show: " + receiveData);
+        if (receiveData.contains("Off") || receiveData.contains("Punch")) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mAccountField.setText(receiveData);
+                }
+            });
+        } else {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mTestData.setText(receiveData);
+                }
+            });
+        }
     }
 }
