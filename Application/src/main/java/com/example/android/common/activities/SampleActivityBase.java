@@ -16,6 +16,9 @@
 
 package com.example.android.common.activities;
 
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
@@ -32,6 +35,7 @@ public class SampleActivityBase extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -48,5 +52,15 @@ public class SampleActivityBase extends FragmentActivity {
         Log.setLogNode(logWrapper);
 
         Log.i(TAG, "Ready");
+    }
+
+    public void getRing() {
+//        Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+//        Ringtone ringtone = RingtoneManager.getRingtone(SampleActivityBase.this,uri);
+//        try{
+//            ringtone.play();
+//        }catch (NullPointerException e){
+//            e.printStackTrace();
+//        }
     }
 }

@@ -1,8 +1,8 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:18:1-53:12
-INJECTED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:18:1-53:12
-INJECTED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:18:1-53:12
+ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:18:1-54:12
+INJECTED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:18:1-54:12
+INJECTED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:18:1-54:12
 MERGED from [com.android.support:support-v13:28.0.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-v13-28.0.0.aar\3205a7907abe79ce4c502ae627a06261\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-v4:28.0.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\1ef125775c318b431916a5d17846fb2e\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\74fda50d8806284cf80c590fa9c3bd42\AndroidManifest.xml:17:1-22:12
@@ -34,8 +34,8 @@ MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\user\.gradle\cache
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\abaeab5a98b029fb7b1aae926406e863\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\36b030078d560d84e80ff24890dbec73\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\6f4676b6d33fae1187924e4eff8a1f0e\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:18:1-53:12
-INJECTED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:18:1-53:12
+INJECTED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:18:1-54:12
+INJECTED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:18:1-54:12
 	package
 		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:19:5-45
 	android:versionName
@@ -52,14 +52,18 @@ uses-permission#android.permission.NFC
 ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:25:5-62
 	android:name
 		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:25:22-59
-uses-feature#android.hardware.nfc
-ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:26:5-81
-	android:required
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:26:55-78
+uses-permission#android.permission.VIBRATE
+ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:26:5-65
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:26:19-54
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:26:22-63
+uses-feature#android.hardware.nfc
+ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:27:5-81
+	android:required
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:27:55-78
+	android:name
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:27:19-54
 application
-ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:28:5-50:19
+ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:29:5-51:19
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\b2d803da43ff138601fbc9a7c823aeb9\AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\b2d803da43ff138601fbc9a7c823aeb9\AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\d5339932e68a29a8d5d5dc922310473f\AndroidManifest.xml:22:5-23:19
@@ -67,43 +71,43 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\user\.grad
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\b2d803da43ff138601fbc9a7c823aeb9\AndroidManifest.xml:22:18-91
 	android:label
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:29:9-41
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:30:9-41
 	android:icon
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:30:9-45
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:31:9-45
 	android:allowBackup
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:28:18-44
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:29:18-44
 	android:theme
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:31:9-40
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:32:9-40
 activity#com.example.android.cardreader.MainActivity
-ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:32:9-49:20
+ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:33:9-50:20
 	android:label
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:33:19-51
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:34:19-51
 	android:launchMode
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:34:19-49
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:35:19-49
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:32:19-47
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:33:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:35:13-38:29
+ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:36:13-39:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:36:17-69
+ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:37:17-69
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:36:25-66
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:37:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:37:17-77
+ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:38:17-77
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:37:27-74
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:38:27-74
 intent-filter#action:name:android.nfc.action.TECH_DISCOVERED
-ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:43:13-45:29
+ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:44:13-46:29
 action#android.nfc.action.TECH_DISCOVERED
-ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:44:17-77
+ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:45:17-77
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:44:25-74
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:45:25-74
 meta-data#android.nfc.action.TECH_DISCOVERED
-ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:46:13-48:59
+ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:47:13-49:59
 	android:resource
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:48:17-56
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:49:17-56
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:47:17-66
+		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:48:17-66
 uses-sdk
 INJECTED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml

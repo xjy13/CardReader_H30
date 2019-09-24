@@ -15,14 +15,18 @@
  */
 package com.example.android.cardreader;
 
+import android.app.Service;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.IsoDep;
+import android.os.Handler;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 
 import com.example.android.Utils.Utils;
+import com.example.android.common.activities.SampleActivityBase;
 import com.example.android.common.logger.Log;
 
 import java.io.IOException;
@@ -54,16 +58,21 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
     // foreground mode before it becomes invalid (e.g. during onPause() or onStop()).
     private WeakReference<AccountCallback> mAccountCallback;
     private WeakReference<AccountCallback> mTestData;
-    private int task;
-    Semaphore semaphore = new Semaphore(1);
+    private Semaphore semaphore = new Semaphore(1);
     private static SharedPreferences sprf;
+    private static Handler handler = new Handler();
+    static Vibrator mVibrator;
 
     public interface AccountCallback {
-        void onAccountReceived(String account);
+        void onAccountReceived(String account, int type);
     }
 
     public LoyaltyCardReader(AccountCallback accountCallback) {
         mAccountCallback = new WeakReference<AccountCallback>(accountCallback);
+    }
+
+    public static void setVibrate(Context context) {
+        mVibrator = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
     }
 
 
@@ -84,6 +93,7 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
         // In order to communicate with a device using HCE, the discovered tag should be processed
         // using the IsoDep class.
         IsoDep isoDep = IsoDep.get(tag);
+
         if (isoDep != null) {
             new APDUExecutor(isoDep);
             try {
@@ -95,7 +105,7 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
                 }
                 // Build SELECT AID command for our loyalty card service.
                 // This command tells the remote device which service we wish to communicate with.
-                Log.i(TAG, "Requesting remote AID: " + SAMPLE_TEST_AID);
+                //   Log.i(TAG, "Requesting remote AID: " + SAMPLE_TEST_AID);
                 // Send command to remote device
 //                semaphore.acquire();
 //                byte[] result = APDUExecutor.apdu(SAMPLE_TEST_AID);
@@ -114,15 +124,28 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
 //                byte[] payload_2 = APDUTranslator.rapduResp(result_2).get(1);
 //                testDisplayResult(statusWord_2, payload_2);
 //                semaphore.release();
-                task = sprf.getInt("TaskTest", -1);
+                int task = sprf.getInt("TaskTest", -1);
                 Log.d(TAG, "task: " + task);
-                if (task == 0) {
-                    callPunchStatusData();
-                } else {
-                    callStaffID();
-                }
-
-
+//                switch (task) {
+//                    case 0:
+//                        callPunchStatusData();
+//                        break;
+//                    case 1:
+//                        callStaffID();
+//                        break;
+//                    default:
+//                        callPunchStatusData();
+//                        callStaffID();
+//                        break;
+//                }
+//                if (task == 0) {
+//                    callPunchStatusData();
+//                } else if(task == 1){
+//                    Log.d(TAG,"XDDDDD");
+//                    callStaffID();
+//                }
+                callPunchStatusData();
+                callStaffID();
             } catch (IOException e) {
                 Log.e(TAG, "Error communicating with card: " + e.toString());
             } catch (InterruptedException e) {
@@ -142,39 +165,45 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
     }
 
 
-    private synchronized void testDisplayResult(byte[] rapduState, byte[] payload) {
+    private synchronized void testDisplayResult(byte[] rapduState, byte[] payload, int type) {
         if (Arrays.equals(SELECT_OK_SW, rapduState)) {
             // The remote NFC device will immediately respond with its stored account number
             String payloadData = new String(payload, StandardCharsets.UTF_8);
             Log.i(TAG, "Received: " + payloadData);
             // Inform CardReaderFragment of received account number
-            mAccountCallback.get().onAccountReceived(payloadData);
+            mAccountCallback.get().onAccountReceived(payloadData, type);
         } else {
             Log.d(TAG, "not 0x9000 result: " + Utils.byte2hex(rapduState));
-            mAccountCallback.get().onAccountReceived(Utils.byte2hex(rapduState) + " -- " + new String(payload, StandardCharsets.UTF_8));
+            mAccountCallback.get().onAccountReceived(Utils.byte2hex(rapduState) + " -- " + new String(payload, StandardCharsets.UTF_8), type);
         }
     }
 
 
     private synchronized void callPunchStatusData() throws InterruptedException {
-        semaphore.acquire();
-        byte[] result = APDUExecutor.apdu(SAMPLE_TEST_AID);
+        final byte[] result = APDUExecutor.apdu(SAMPLE_TEST_AID);
         // If AID is successfully selected, 0x9000 is returned as the status word (last 2
         // bytes of the result) by convention. Everything before the status word is
         // optional payload, which is used here to hold the account number.
+        if (!APDUTranslator.rapduResp(result).isEmpty()) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Log.i(TAG, "WWWWWWAAAAAIIIITTTTT~~~");
+                    // new MainActivity().setVibrate();
+                }
+            }, 2000);
+        }
         byte[] statusWord = APDUTranslator.rapduResp(result).get(0);
         byte[] payload = APDUTranslator.rapduResp(result).get(1);
-        testDisplayResult(statusWord, payload);
-        semaphore.release();
+        testDisplayResult(statusWord, payload, 0);
+        mVibrator.vibrate(10000);
     }
 
     private synchronized void callStaffID() throws InterruptedException {
-        semaphore.acquire();
         byte[] result_2 = APDUExecutor.apdu(SAMPLE_TEST_AID_2);
         byte[] statusWord_2 = APDUTranslator.rapduResp(result_2).get(0);
         byte[] payload_2 = APDUTranslator.rapduResp(result_2).get(1);
-        testDisplayResult(statusWord_2, payload_2);
-        semaphore.release();
+        testDisplayResult(statusWord_2, payload_2, 1);
     }
 
 
