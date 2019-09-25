@@ -53,7 +53,7 @@ ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\ma
 	android:name
 		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:25:22-59
 uses-permission#android.permission.VIBRATE
-ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:26:5-65
+ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:26:5-66
 	android:name
 		ADDED from C:\Users\user\AndroidStudioProjects\CardReader_H30\Application\src\main\AndroidManifest.xml:26:22-63
 uses-feature#android.hardware.nfc

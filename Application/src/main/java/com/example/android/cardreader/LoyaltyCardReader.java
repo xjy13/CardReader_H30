@@ -24,9 +24,9 @@ import android.nfc.tech.IsoDep;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 import com.example.android.Utils.Utils;
-import com.example.android.common.activities.SampleActivityBase;
 import com.example.android.common.logger.Log;
 
 import java.io.IOException;
@@ -53,6 +53,7 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
     private static final String TEST_APDU_HEADER = "00C40400";
     // "OK" status word sent in response to SELECT AID command (0x9000)
     private static final byte[] SELECT_OK_SW = {(byte) 0x90, (byte) 0x00};
+    private static final String TASK_KEY = "TaskTest";
 
     // Weak reference to prevent retain loop. mAccountCallback is responsible for exiting
     // foreground mode before it becomes invalid (e.g. during onPause() or onStop()).
@@ -103,27 +104,6 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
                     Log.w(TAG, "isoDep not connected");
                     return;
                 }
-                // Build SELECT AID command for our loyalty card service.
-                // This command tells the remote device which service we wish to communicate with.
-                //   Log.i(TAG, "Requesting remote AID: " + SAMPLE_TEST_AID);
-                // Send command to remote device
-//                semaphore.acquire();
-//                byte[] result = APDUExecutor.apdu(SAMPLE_TEST_AID);
-                // If AID is successfully selected, 0x9000 is returned as the status word (last 2
-                // bytes of the result) by convention. Everything before the status word is
-                // optional payload, which is used here to hold the account number.
-//                byte[] statusWord =  APDUTranslator.rapduResp(result).get(0);
-//                byte[] payload = APDUTranslator.rapduResp(result).get(1);
-//                Log.d(TAG,"payload: "+Utils.byte2hexForLog(payload));
-//                testDisplayResult(statusWord, payload);
-//                semaphore.release();
-//
-//                semaphore.acquire();
-//                byte[] result_2 = APDUExecutor.apdu(SAMPLE_TEST_AID_2);
-//                byte[] statusWord_2 = APDUTranslator.rapduResp(result_2).get(0);
-//                byte[] payload_2 = APDUTranslator.rapduResp(result_2).get(1);
-//                testDisplayResult(statusWord_2, payload_2);
-//                semaphore.release();
                 int task = sprf.getInt("TaskTest", -1);
                 Log.d(TAG, "task: " + task);
 //                switch (task) {
@@ -151,17 +131,18 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        } else {
+            Log.w(TAG, "ISODep not instance");
         }
     }
 
     static void getTask(boolean isReset, int task, Context c) {
         if (!isReset) {
             sprf = PreferenceManager.getDefaultSharedPreferences(c);
-            sprf.edit().putInt("TaskTest", task).apply();
+            sprf.edit().putInt(TASK_KEY, task).apply();
         } else {
             sprf.edit().clear().apply();
         }
-
     }
 
 
@@ -173,37 +154,57 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
             // Inform CardReaderFragment of received account number
             mAccountCallback.get().onAccountReceived(payloadData, type);
         } else {
-            Log.d(TAG, "not 0x9000 result: " + Utils.byte2hex(rapduState));
-            mAccountCallback.get().onAccountReceived(Utils.byte2hex(rapduState) + " -- " + new String(payload, StandardCharsets.UTF_8), type);
+            Log.d(TAG, "not 0x9000 result: 0x" + Utils.byte2hex(rapduState));
+            mAccountCallback.get().onAccountReceived("0x" + Utils.byte2hex(rapduState) + " -- " + new String(payload, StandardCharsets.UTF_8), type);
         }
     }
 
 
     private synchronized void callPunchStatusData() throws InterruptedException {
-        final byte[] result = APDUExecutor.apdu(SAMPLE_TEST_AID);
+
+        APDUExecutor.apdu(SAMPLE_TEST_AID, new ApduCallback() {
+            @Override
+            public void onDone(byte[] result) {
+                if (APDUTranslator.rapduResp(result).isEmpty()) {
+                    Log.w(TAG, "rapdu no data: ");
+                } else {
+                    byte[] statusWord = APDUTranslator.rapduResp(result).get(0);
+                    byte[] payload = APDUTranslator.rapduResp(result).get(1);
+                    testDisplayResult(statusWord, payload, 0);
+                    mVibrator.vibrate(300);
+                }
+            }
+
+            @Override
+            public void onError(Exception e) {
+                e.printStackTrace();
+            }
+        });
         // If AID is successfully selected, 0x9000 is returned as the status word (last 2
         // bytes of the result) by convention. Everything before the status word is
         // optional payload, which is used here to hold the account number.
-        if (!APDUTranslator.rapduResp(result).isEmpty()) {
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Log.i(TAG, "WWWWWWAAAAAIIIITTTTT~~~");
-                    // new MainActivity().setVibrate();
-                }
-            }, 2000);
-        }
-        byte[] statusWord = APDUTranslator.rapduResp(result).get(0);
-        byte[] payload = APDUTranslator.rapduResp(result).get(1);
-        testDisplayResult(statusWord, payload, 0);
-        mVibrator.vibrate(10000);
+
     }
 
     private synchronized void callStaffID() throws InterruptedException {
-        byte[] result_2 = APDUExecutor.apdu(SAMPLE_TEST_AID_2);
-        byte[] statusWord_2 = APDUTranslator.rapduResp(result_2).get(0);
-        byte[] payload_2 = APDUTranslator.rapduResp(result_2).get(1);
-        testDisplayResult(statusWord_2, payload_2, 1);
+        APDUExecutor.apdu(SAMPLE_TEST_AID_2, new ApduCallback() {
+            @Override
+            public void onDone(byte[] result) {
+                if (APDUTranslator.rapduResp(result).isEmpty()) {
+                    Log.w(TAG, "rapdu no data: ");
+                } else {
+                    byte[] statusWord = APDUTranslator.rapduResp(result).get(0);
+                    byte[] payload = APDUTranslator.rapduResp(result).get(1);
+                    testDisplayResult(statusWord, payload, 1);
+                    mVibrator.vibrate(300);
+                }
+            }
+
+            @Override
+            public void onError(Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 
@@ -225,33 +226,5 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
         }
         return apdu;
     }
-
-    /**
-     * Utility class to convert a byte array to a hexadecimal string.
-     *
-     * @param bytes Bytes to convert
-     * @return String, containing hexadecimal representation.
-     */
-    public static String ByteArrayToHexString(byte[] bytes) {
-        final char[] hexArray = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
-        char[] hexChars = new char[bytes.length * 2];
-        int v;
-        for (int j = 0; j < bytes.length; j++) {
-            v = bytes[j] & 0xFF;
-            hexChars[j * 2] = hexArray[v >>> 4];
-            hexChars[j * 2 + 1] = hexArray[v & 0x0F];
-        }
-        return new String(hexChars);
-    }
-
-    /**
-     * Utility class to convert a hexadecimal string to a byte string.
-     *
-     * <p>Behavior with input strings containing non-hexadecimal characters is undefined.
-     *
-     * @param s String containing hexadecimal characters to convert
-     * @return Byte array generated from input
-     */
-
 
 }

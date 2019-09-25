@@ -17,6 +17,7 @@
 
 package com.example.android.cardreader;
 
+import android.app.ProgressDialog;
 import android.app.Service;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -53,7 +54,7 @@ public class MainActivity extends SampleActivityBase {
     private boolean mLogShown;
     private int selectTask = -1;
     private UIView uiView;
-
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +89,9 @@ public class MainActivity extends SampleActivityBase {
 
             }
         });
+
+        //  getProgressDialog();
+
     }
 
     @Override
@@ -153,7 +157,22 @@ public class MainActivity extends SampleActivityBase {
     }
 
     public void getProgressDialog() {
-        uiView.getProgressDialog();
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setMessage("Loading..."); // Setting Message
+        progressDialog.setTitle("ProgressDialog"); // Setting Title
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progressDialog.show(); // Display Progress Dialog
+        progressDialog.setCancelable(false);
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Thread.sleep(10000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                progressDialog.dismiss();
+            }
+        }).start();
     }
 
     public void dismissProgressDialog() {

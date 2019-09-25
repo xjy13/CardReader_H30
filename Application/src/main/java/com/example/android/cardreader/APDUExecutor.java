@@ -16,16 +16,17 @@ public class APDUExecutor {
         APDUExecutor.isoDep = isoDep;
     }
 
-    static synchronized byte[] apdu(String aid){
+    static synchronized void apdu(String aid, ApduCallback apduCallback) {
         byte[] command = BuildSelectApdu(aid);
         byte[] result = new byte[0];
         // Send command to remote device
         Log.i(TAG, "Sending: " + Utils.byte2hexForLog(command));
         try {
            result = isoDep.transceive(command);
+            apduCallback.onDone(result);
         } catch (IOException e) {
+            apduCallback.onError(e);
             e.printStackTrace();
         }
-        return result;
     }
 }
