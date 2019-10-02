@@ -1,4 +1,4 @@
-#Wed Sep 25 13:30:29 CST 2019
+#Wed Oct 02 17:34:29 CST 2019
 base.0=C\:\\Users\\user\\AndroidStudioProjects\\CardReader_H30\\Application\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
 path.0=classes.dex
 renamed.0=classes.dex

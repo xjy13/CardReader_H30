@@ -21,17 +21,17 @@ import android.content.SharedPreferences;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.IsoDep;
-import android.os.Handler;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
-import android.widget.Toast;
 
+import com.example.android.RAPDUApi.RapduInterface;
 import com.example.android.Utils.Utils;
 import com.example.android.common.logger.Log;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.Semaphore;
 
@@ -50,18 +50,28 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
     // Format: [Class | Instruction | Parameter 1 | Parameter 2]
     private static final String SELECT_APDU_HEADER = "00A40400";
     private static final String UPDATE_APDU_HEADER = "00B40400";
-    private static final String TEST_APDU_HEADER = "00C40400";
+    private static final String TEST_APDU_HEADER = "00A40500";
     // "OK" status word sent in response to SELECT AID command (0x9000)
     private static final byte[] SELECT_OK_SW = {(byte) 0x90, (byte) 0x00};
     private static final String TASK_KEY = "TaskTest";
+    private static RapduInterface mRapduInterface;
+
+    ///APDU format example///
+    /*
+     (byte) 0x00, // CLA = 00 (first interindustry command set)
+      (byte) 0xA4, // INS = A4 (SELECT)
+      (byte) 0x04, // P1 = 04 (select file by DF name)
+      (byte) 0x0C, // P2 = 0C (first or only file; no FCI)
+      (byte) 0x06, // Lc = 6 (data/AID has 6 bytes)
+      (byte) 0x31, (byte) 0x35,(byte) 0x38,(byte) 0x34,(byte) 0x35,(byte) 0x46 // AID = 15845F
+      */
+
 
     // Weak reference to prevent retain loop. mAccountCallback is responsible for exiting
     // foreground mode before it becomes invalid (e.g. during onPause() or onStop()).
     private WeakReference<AccountCallback> mAccountCallback;
-    private WeakReference<AccountCallback> mTestData;
     private Semaphore semaphore = new Semaphore(1);
     private static SharedPreferences sprf;
-    private static Handler handler = new Handler();
     static Vibrator mVibrator;
 
     public interface AccountCallback {
@@ -74,6 +84,10 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
 
     public static void setVibrate(Context context) {
         mVibrator = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
+    }
+
+    public static void setTestRAPDU(Context context) {
+        mRapduInterface = RapduInterface.Factory.create(context);
     }
 
 
@@ -111,11 +125,11 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
 //                        callPunchStatusData();
 //                        break;
 //                    case 1:
-//                        callStaffID();
+//                    //    callStaffID();
 //                        break;
 //                    default:
-//                        callPunchStatusData();
-//                        callStaffID();
+////                        callPunchStatusData();
+////                        callStaffID();
 //                        break;
 //                }
 //                if (task == 0) {
@@ -124,13 +138,20 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
 //                    Log.d(TAG,"XDDDDD");
 //                    callStaffID();
 //                }
-                callPunchStatusData();
-                callStaffID();
+
+                ArrayList<byte[]> punchList = mRapduInterface.callPunchStatusData();
+                displayResult(punchList.get(0), punchList.get(1), 0);
+                ArrayList<byte[]> idList = mRapduInterface.callStaffID();
+                displayResult(idList.get(0), idList.get(1), 1);
+
+//                callStaffID();
+//                callPunchStatusData();
             } catch (IOException e) {
                 Log.e(TAG, "Error communicating with card: " + e.toString());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
+//            catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
         } else {
             Log.w(TAG, "ISODep not instance");
         }
@@ -146,7 +167,7 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
     }
 
 
-    private synchronized void testDisplayResult(byte[] rapduState, byte[] payload, int type) {
+    private synchronized void displayResult(byte[] rapduState, byte[] payload, int type) {
         if (Arrays.equals(SELECT_OK_SW, rapduState)) {
             // The remote NFC device will immediately respond with its stored account number
             String payloadData = new String(payload, StandardCharsets.UTF_8);
@@ -160,51 +181,23 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
     }
 
 
-    private synchronized void callPunchStatusData() throws InterruptedException {
-
-        APDUExecutor.apdu(SAMPLE_TEST_AID, new ApduCallback() {
-            @Override
-            public void onDone(byte[] result) {
-                if (APDUTranslator.rapduResp(result).isEmpty()) {
-                    Log.w(TAG, "rapdu no data: ");
-                } else {
-                    byte[] statusWord = APDUTranslator.rapduResp(result).get(0);
-                    byte[] payload = APDUTranslator.rapduResp(result).get(1);
-                    testDisplayResult(statusWord, payload, 0);
-                    mVibrator.vibrate(300);
-                }
-            }
-
-            @Override
-            public void onError(Exception e) {
-                e.printStackTrace();
-            }
-        });
+    private synchronized void resultPunchStatusData(byte[] result) throws InterruptedException {
+        Log.d(TAG, "result: " + result.toString());
+        byte[] statusWord = APDUTranslator.rapduResp(result).get(0);
+        byte[] payload = APDUTranslator.rapduResp(result).get(1);
+        displayResult(statusWord, payload, 0);
+        mVibrator.vibrate(300);
         // If AID is successfully selected, 0x9000 is returned as the status word (last 2
         // bytes of the result) by convention. Everything before the status word is
         // optional payload, which is used here to hold the account number.
 
     }
 
-    private synchronized void callStaffID() throws InterruptedException {
-        APDUExecutor.apdu(SAMPLE_TEST_AID_2, new ApduCallback() {
-            @Override
-            public void onDone(byte[] result) {
-                if (APDUTranslator.rapduResp(result).isEmpty()) {
-                    Log.w(TAG, "rapdu no data: ");
-                } else {
-                    byte[] statusWord = APDUTranslator.rapduResp(result).get(0);
-                    byte[] payload = APDUTranslator.rapduResp(result).get(1);
-                    testDisplayResult(statusWord, payload, 1);
-                    mVibrator.vibrate(300);
-                }
-            }
-
-            @Override
-            public void onError(Exception e) {
-                e.printStackTrace();
-            }
-        });
+    private synchronized void resultCallStaffID(byte[] result) throws InterruptedException {
+        byte[] statusWord = APDUTranslator.rapduResp(result).get(0);
+        byte[] payload = APDUTranslator.rapduResp(result).get(1);
+        displayResult(statusWord, payload, 1);
+        mVibrator.vibrate(300);
     }
 
 

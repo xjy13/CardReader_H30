@@ -18,9 +18,7 @@
 package com.example.android.cardreader;
 
 import android.app.ProgressDialog;
-import android.app.Service;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +30,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ViewAnimator;
 
+import com.example.android.RAPDUApi.RapduInterface;
 import com.example.android.cardreader.UI.UIView;
 import com.example.android.common.activities.SampleActivityBase;
 import com.example.android.common.logger.Log;
@@ -55,12 +54,16 @@ public class MainActivity extends SampleActivityBase {
     private int selectTask = -1;
     private UIView uiView;
     ProgressDialog progressDialog;
+    RapduInterface XD;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        uiView = new UIView(MainActivity.this);
         LoyaltyCardReader.setVibrate(MainActivity.this);
+        LoyaltyCardReader.setTestRAPDU(MainActivity.this);
+
 
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
