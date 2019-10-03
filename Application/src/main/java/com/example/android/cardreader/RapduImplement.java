@@ -44,9 +44,12 @@ public class RapduImplement implements RapduInterface {
             public void onDone(byte[] result) {
                 if (result == null) {
                     Log.w(TAG, "rapdu no data: ");
+                    list.add(Utils.textToByteArray("6E00"));
                 }
-                byte[] statusWord = APDUTranslator.rapduResp(result).get(0);
-                byte[] payload = APDUTranslator.rapduResp(result).get(1);
+                Log.d(TAG, "get punch time rapdu");
+                ArrayList<byte[]> resultList = APDUTranslator.rapduResp(result);
+                byte[] statusWord = resultList.get(0);
+                byte[] payload = resultList.get(1);
 
                 list.add(statusWord);
                 list.add(payload);
@@ -75,9 +78,11 @@ public class RapduImplement implements RapduInterface {
             public void onDone(byte[] result) {
                 if (APDUTranslator.rapduResp(result).isEmpty()) {
                     Log.w(TAG, "rapdu no data: ");
+                    list.add(Utils.textToByteArray("6E00"));
                 }
-                byte[] statusWord = APDUTranslator.rapduResp(result).get(0);
-                byte[] payload = APDUTranslator.rapduResp(result).get(1);
+                ArrayList<byte[]> resultList = APDUTranslator.rapduResp(result);
+                byte[] statusWord = resultList.get(0);
+                byte[] payload = resultList.get(1);
                 list.add(statusWord);
                 list.add(payload);
 //                    testDisplayResult(statusWord, payload, 1);

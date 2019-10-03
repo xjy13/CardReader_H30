@@ -133,17 +133,16 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
 //                        break;
 //                }
 //                if (task == 0) {
-//                    callPunchStatusData();
+//
 //                } else if(task == 1){
 //                    Log.d(TAG,"XDDDDD");
-//                    callStaffID();
+//
 //                }
 
                 ArrayList<byte[]> punchList = mRapduInterface.callPunchStatusData();
                 displayResult(punchList.get(0), punchList.get(1), 0);
                 ArrayList<byte[]> idList = mRapduInterface.callStaffID();
                 displayResult(idList.get(0), idList.get(1), 1);
-
 //                callStaffID();
 //                callPunchStatusData();
             } catch (IOException e) {
@@ -181,8 +180,7 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
     }
 
 
-    private synchronized void resultPunchStatusData(byte[] result) throws InterruptedException {
-        Log.d(TAG, "result: " + result.toString());
+   /* private synchronized void resultPunchStatusData(byte[] result) throws InterruptedException {
         byte[] statusWord = APDUTranslator.rapduResp(result).get(0);
         byte[] payload = APDUTranslator.rapduResp(result).get(1);
         displayResult(statusWord, payload, 0);
@@ -191,14 +189,14 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
         // bytes of the result) by convention. Everything before the status word is
         // optional payload, which is used here to hold the account number.
 
-    }
+    }*/
 
-    private synchronized void resultCallStaffID(byte[] result) throws InterruptedException {
+   /* private synchronized void resultCallStaffID(byte[] result) throws InterruptedException {
         byte[] statusWord = APDUTranslator.rapduResp(result).get(0);
         byte[] payload = APDUTranslator.rapduResp(result).get(1);
         displayResult(statusWord, payload, 1);
         mVibrator.vibrate(300);
-    }
+    }*/
 
 
     /**
