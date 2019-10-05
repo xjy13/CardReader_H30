@@ -24,7 +24,6 @@ public class RapduImplement implements RapduInterface {
         if ((mContext.get() == null) || instance == null) {
             instance = new RapduImplement(context);
         }
-
         return instance;
     }
 
@@ -85,7 +84,6 @@ public class RapduImplement implements RapduInterface {
                 byte[] payload = resultList.get(1);
                 list.add(statusWord);
                 list.add(payload);
-//                    testDisplayResult(statusWord, payload, 1);
 //                    mVibrator.vibrate(300);
             }
 

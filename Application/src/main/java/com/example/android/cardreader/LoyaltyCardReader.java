@@ -108,7 +108,6 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
         // In order to communicate with a device using HCE, the discovered tag should be processed
         // using the IsoDep class.
         IsoDep isoDep = IsoDep.get(tag);
-
         if (isoDep != null) {
             new APDUExecutor(isoDep);
             try {
@@ -143,14 +142,9 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
                 displayResult(punchList.get(0), punchList.get(1), 0);
                 ArrayList<byte[]> idList = mRapduInterface.callStaffID();
                 displayResult(idList.get(0), idList.get(1), 1);
-//                callStaffID();
-//                callPunchStatusData();
             } catch (IOException e) {
                 Log.e(TAG, "Error communicating with card: " + e.toString());
             }
-//            catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
         } else {
             Log.w(TAG, "ISODep not instance");
         }
