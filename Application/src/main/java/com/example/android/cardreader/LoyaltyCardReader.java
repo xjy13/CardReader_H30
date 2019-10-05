@@ -86,7 +86,7 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
         mVibrator = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
     }
 
-    public static void setTestRAPDU(Context context) {
+    static void setTestRAPDU(Context context) {
         mRapduInterface = RapduInterface.Factory.create(context);
     }
 
